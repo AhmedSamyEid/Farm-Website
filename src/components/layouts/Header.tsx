@@ -64,7 +64,7 @@ const NavItemComponent: React.FC<{ item: NavItem }> = ({ item }) => {
 const MobileMenu: React.FC<{ navItems: NavItem[]; onClose: () => void }> = ({
   navItems,
 }) => (
-  <div className="md:hidden absolute top-20 left-0 w-full bg-black/80 text-white z-100 px-6 py-4 space-y-4">
+  <div className="md:hidden absolute top-20 left-0 w-full bg-black/80 text-white z-100 px-6 py-4 space-y-4 ">
     {navItems.map((item, index) => (
       <div key={index}>
         {item.submenu ? (
@@ -90,7 +90,7 @@ const MobileMenu: React.FC<{ navItems: NavItem[]; onClose: () => void }> = ({
         )}
       </div>
     ))}
-    <button className="bg-yellow-400 text-black px-4 py-2 rounded-full w-full">
+    <button className="bg-yellow-400 text-black px-4 py-2 rounded-full w-full cursor-pointer">
       Get In Touch
     </button>
   </div>
@@ -106,12 +106,12 @@ const Header: React.FC = () => {
     >
       <div className="absolute inset-0 bg-black/50 z-0" />
 
-      <nav className="relative z-10 flex justify-between items-center px-6 py-4">
+      <nav className="relative z-10 flex justify-between items-center px-6 py-4 ">
         <div className="text-white font-bold text-xl flex items-center gap-2">
           <img src="/icons/logo-white.svg.png" alt="Logo" className="h-8" />
         </div>
 
-        <ul className="hidden md:flex items-center space-x-6 text-white font-medium">
+        <ul className="hidden md:flex items-center space-x-6 text-white font-medium ">
           {navItems.map((item, index) => (
             <NavItemComponent key={index} item={item} />
           ))}
@@ -122,16 +122,16 @@ const Header: React.FC = () => {
             <span className="block font-bold">Call us Now</span>
             <span>+1 (231) 225-5511</span>
           </div>
-          <button className="bg-yellow-400 px-4 py-2 rounded-full text-sm font-semibold hover:bg-yellow-300">
+          <button className="bg-yellow-400 px-4 py-2 rounded-full text-sm font-semibold hover:bg-yellow-300 ">
             Get In Touch
           </button>
         </div>
 
         <button
-          className="md:hidden text-white text-2xl"
+          className="md:hidden text-white text-2xl "
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
-          {mobileMenuOpen ? <FaXmark /> : <FaBars />}
+          {mobileMenuOpen  ? <FaXmark /> : <FaBars /> }
         </button>
       </nav>
 
@@ -142,7 +142,7 @@ const Header: React.FC = () => {
         />
       )}
 
-      <div className="relative z-10 flex flex-col items-start justify-center h-full px-6 md:px-20">
+      <div className="relative z-10 flex flex-col items-start justify-center h-full px-6 md:px-20 ">
         <button className="bg-white text-green-700 px-4 py-1 rounded-full mb-4 font-medium text-sm">
           BELIEVE IN QUALITY!
         </button>
