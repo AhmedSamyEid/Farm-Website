@@ -24,7 +24,15 @@ const AboutSection = () => {
       </div>
 
   
-      <div className="grid md:grid-cols-2 gap-8 items-center mb-12">
+      <div className=" grid md:grid-cols-2 gap-8 items-center mb-12">
+        
+        <div className="flex justify-center md:justify-end">
+          <img src="/image/Background.png" />
+          <div className="text-center px-8 py-10 rounded-xl text-black shadow-md w-60">
+          
+            
+          </div>
+        </div>
         <div>
           <span className="bg-gray-200 px-3 py-1 rounded-full text-xs font-semibold text-gray-700 inline-block mb-2">
             Who We Are
@@ -57,12 +65,6 @@ const AboutSection = () => {
         </div>
 
     
-        <div className="flex justify-center md:justify-end">
-          <div className="bg-yellow-300 text-center px-8 py-10 rounded-xl text-black shadow-md w-60">
-            <p className="text-4xl font-bold mb-2">*435+</p>
-            <p className="text-sm font-medium">Growth Tons of Harvest</p>
-          </div>
-        </div>
       </div>
     </section>
   );
