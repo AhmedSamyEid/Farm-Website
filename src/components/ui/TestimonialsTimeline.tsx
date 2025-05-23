@@ -136,6 +136,7 @@ const TestimonialsTimeline = () => {
             ))}
           </div>
         </div>
+        <img className="mt-15" src="/image/Section (111).png" />
       </div>
     </section>
   );

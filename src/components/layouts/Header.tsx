@@ -5,24 +5,37 @@ import { FaXmark } from "react-icons/fa6";
 interface NavItem {
   label: string;
   link?: string;
-  submenu?: string[];
+  submenu?: { name: string; path: string }[];
 }
 
 const navItems: NavItem[] = [
-  { label: "PAGES", submenu: ["Home 1", "Home 2", "Home 3"] },
+  {
+    label: "Home",
+    submenu: [
+      { name: "Home 2", path: "/home2" },
+      { name: "Home 3", path: "/home3" },
+    ],
+  },
   {
     label: "PAGES",
     submenu: [
-      "About Us",
-      "Our History",
-      "Our Team Member",
-      "Team Member Detail",
-      "Faq",
+      { name: "About Us", path: "/about" },
+      { name: "Our History", path: "/history" },
+      { name: "Our Team Member", path: "/team" },
+      { name: "Team Member Detail", path: "/team-detail" },
+      { name: "Faq", path: "/faq" },
     ],
   },
-  { label: "SERVICES", submenu: ["Consulting", "Support", "Solutions"] },
-  { label: "BLOG" },
-  { label: "CONTACT US" },
+  {
+    label: "SERVICES",
+    submenu: [
+      { name: "Consulting", path: "/consulting" },
+      { name: "Support", path: "/support" },
+      { name: "Solutions", path: "/solutions" },
+    ],
+  },
+  { label: "BLOG", link: "/blog" },
+  { label: "CONTACT US", link: "/contact" },
 ];
 
 const NavItemComponent: React.FC<{ item: NavItem }> = ({ item }) => {
@@ -33,26 +46,23 @@ const NavItemComponent: React.FC<{ item: NavItem }> = ({ item }) => {
       {item.submenu ? (
         <button
           onClick={() => setDropdownOpen(!dropdownOpen)}
-          className="hover:text-yellow-300 transition cursor-pointer "
+          className="hover:text-yellow-300 transition cursor-pointer"
         >
           {item.label}
         </button>
       ) : (
-        <a
-          href={item.link || "#"}
-          className="hover:text-yellow-300 transition "
-        >
+        <a href={item.link || "#"} className="hover:text-yellow-300 transition">
           {item.label}
         </a>
       )}
       {dropdownOpen && item.submenu && (
-        <ul className="absolute top-8 left-0 w-50 bg-white  text-black shadow-lg rounded ">
+        <ul className="absolute top-8 left-0 w-56 bg-white text-black shadow-lg rounded z-50">
           {item.submenu.map((sub, idx) => (
             <li
               key={idx}
               className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
             >
-              {sub}
+              <a href={sub.path}>{sub.name}</a>
             </li>
           ))}
         </ul>
@@ -64,7 +74,7 @@ const NavItemComponent: React.FC<{ item: NavItem }> = ({ item }) => {
 const MobileMenu: React.FC<{ navItems: NavItem[]; onClose: () => void }> = ({
   navItems,
 }) => (
-  <div className="md:hidden absolute top-20 left-0 w-full bg-black/80 text-white z-100 px-6 py-4 space-y-4 ">
+  <div className="md:hidden absolute top-20 left-0 w-full bg-black/80 text-white z-50 px-6 py-4 space-y-4">
     {navItems.map((item, index) => (
       <div key={index}>
         {item.submenu ? (
@@ -75,7 +85,7 @@ const MobileMenu: React.FC<{ navItems: NavItem[]; onClose: () => void }> = ({
             <ul className="ml-4 mt-2 space-y-1">
               {item.submenu.map((sub, idx) => (
                 <li key={idx} className="hover:text-yellow-300">
-                  {sub}
+                  <a href={sub.path}>{sub.name}</a>
                 </li>
               ))}
             </ul>
@@ -106,12 +116,12 @@ const Header: React.FC = () => {
     >
       <div className="absolute inset-0 bg-black/50 z-0" />
 
-      <nav className="relative z-10 flex justify-between items-center px-6 py-4 ">
+      <nav className="relative z-10 flex justify-between items-center px-6 py-4">
         <div className="text-white font-bold text-xl flex items-center gap-2">
           <img src="/icons/logo-white.svg.png" alt="Logo" className="h-8" />
         </div>
 
-        <ul className="hidden md:flex items-center space-x-6 text-white font-medium ">
+        <ul className="hidden md:flex items-center space-x-6 text-white font-medium">
           {navItems.map((item, index) => (
             <NavItemComponent key={index} item={item} />
           ))}
@@ -122,16 +132,16 @@ const Header: React.FC = () => {
             <span className="block font-bold">Call us Now</span>
             <span>+1 (231) 225-5511</span>
           </div>
-          <button className="bg-yellow-400 px-4 py-2 rounded-full text-sm font-semibold hover:bg-yellow-300 ">
+          <button className="bg-yellow-400 px-4 py-2 rounded-full text-sm font-semibold hover:bg-yellow-300">
             Get In Touch
           </button>
         </div>
 
         <button
-          className="md:hidden text-white text-2xl "
+          className="md:hidden text-white text-2xl"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
-          {mobileMenuOpen  ? <FaXmark /> : <FaBars /> }
+          {mobileMenuOpen ? <FaXmark /> : <FaBars />}
         </button>
       </nav>
 
@@ -142,7 +152,7 @@ const Header: React.FC = () => {
         />
       )}
 
-      <div className="relative z-10 flex flex-col items-start justify-center h-full px-6 md:px-20 ">
+      <div className="relative z-10 flex flex-col items-start justify-center h-full px-6 md:px-20">
         <button className="bg-white text-green-700 px-4 py-1 rounded-full mb-4 font-medium text-sm">
           BELIEVE IN QUALITY!
         </button>
