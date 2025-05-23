@@ -58,10 +58,7 @@ const NavItemComponent: React.FC<{ item: NavItem }> = ({ item }) => {
       {dropdownOpen && item.submenu && (
         <ul className="absolute top-8 left-0 w-56 bg-white text-black shadow-lg rounded z-50">
           {item.submenu.map((sub, idx) => (
-            <li
-              key={idx}
-              className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-            >
+            <li key={idx} className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
               <a href={sub.path}>{sub.name}</a>
             </li>
           ))}
@@ -72,7 +69,7 @@ const NavItemComponent: React.FC<{ item: NavItem }> = ({ item }) => {
 };
 
 const MobileMenu: React.FC<{ navItems: NavItem[]; onClose: () => void }> = ({
-  navItems,
+  navItems
 }) => (
   <div className="md:hidden absolute top-20 left-0 w-full bg-black/80 text-white z-50 px-6 py-4 space-y-4">
     {navItems.map((item, index) => (
@@ -110,12 +107,7 @@ const Header: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header
-      className="relative w-full h-screen bg-cover bg-center"
-      style={{ backgroundImage: "url('/image/Image.png')" }}
-    >
-      <div className="absolute inset-0 bg-black/50 z-0" />
-
+    <header className="relative w-full bg-transparent z-1000">
       <nav className="relative z-10 flex justify-between items-center px-6 py-4">
         <div className="text-white font-bold text-xl flex items-center gap-2">
           <img src="/icons/logo-white.svg.png" alt="Logo" className="h-8" />
@@ -146,29 +138,11 @@ const Header: React.FC = () => {
       </nav>
 
       {mobileMenuOpen && (
-        <MobileMenu
-          navItems={navItems}
-          onClose={() => setMobileMenuOpen(false)}
-        />
+        <MobileMenu navItems={navItems} onClose={() => setMobileMenuOpen(false)} />
       )}
-
-      <div className="relative z-10 flex flex-col items-start justify-center h-full px-6 md:px-20">
-        <button className="bg-white text-green-700 px-4 py-1 rounded-full mb-4 font-medium text-sm">
-          BELIEVE IN QUALITY!
-        </button>
-        <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight mb-4">
-          Quality Trust: <br /> Direct to the Farm
-        </h1>
-        <p className="text-white text-lg max-w-xl mb-6">
-          We all need a little space to grow. Give yourself the space you need
-          to find your inner you.
-        </p>
-        <button className="bg-white text-black px-6 py-2 rounded-full hover:bg-gray-100 transition">
-          Contact Us
-        </button>
-      </div>
     </header>
   );
 };
 
 export default Header;
+
