@@ -27,7 +27,7 @@ const AboutSection = () => {
       <div className=" grid md:grid-cols-2 gap-8 items-center mb-12">
         
         <div className="flex justify-center md:justify-end">
-          <img src="/image/Background.png" />
+          <img className="w-70" src="/image/Background.png" />
           <div className="text-center px-8 py-10 rounded-xl text-black shadow-md w-60">
           
             
