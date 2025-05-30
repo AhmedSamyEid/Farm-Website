@@ -41,7 +41,7 @@ const TestimonialsTimeline = () => {
       setIsMediumScreen(window.innerWidth >= 768 && window.innerWidth < 1024);
     };
 
-    handleResize(); // Initial
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -61,9 +61,7 @@ const TestimonialsTimeline = () => {
   const visibleLogos = logos.slice(logoIndex, logoIndex + ITEMS_PER_PAGE);
 
   const handlePostNext = () => {
-    setCurrentPostIndex((prev) =>
-      prev + 1 < posts.length ? prev + 1 : prev
-    );
+    setCurrentPostIndex((prev) => (prev + 1 < posts.length ? prev + 1 : prev));
   };
 
   const handlePostPrev = () => {
@@ -72,7 +70,6 @@ const TestimonialsTimeline = () => {
 
   return (
     <div className="bg-white">
-      {/* Client Logos Section */}
       <div className="max-w-6xl mx-auto">
         <div className="flex justify-end space-x-2 mt-4">
           <button
@@ -101,7 +98,6 @@ const TestimonialsTimeline = () => {
         </div>
       </div>
 
-      {/* Quote Form */}
       <div className="max-w-7xl mx-auto py-16 px-4 grid md:grid-cols-2 gap-12 items-center">
         <img src="/image/img-01.png.png" alt="Farmer" className="rounded-xl" />
         <div className="bg-gray-100 p-8 rounded-xl shadow-lg">
@@ -127,7 +123,6 @@ const TestimonialsTimeline = () => {
         </div>
       </div>
 
-      {/* Posts Slider */}
       <section className="py-16 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="flex justify-between items-center mb-6">
@@ -151,27 +146,26 @@ const TestimonialsTimeline = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-3 gap-6 transition-all duration-300">
-            {(isMediumScreen
-              ? [posts[currentPostIndex]]
-              : posts
-            ).map((post, idx) => (
-              <div
-                key={idx}
-                className="bg-white rounded-xl overflow-hidden shadow hover:shadow-md transition"
-              >
-                <img
-                  src={post.img}
-                  alt={post.title}
-                  className="w-full h-48 object-cover"
-                />
-                <div className="p-4">
-                  <span className="text-sm text-green-600 font-medium">
-                    {post.category}
-                  </span>
-                  <h4 className="font-semibold mt-2">{post.title}</h4>
+            {(isMediumScreen ? [posts[currentPostIndex]] : posts).map(
+              (post, idx) => (
+                <div
+                  key={idx}
+                  className="bg-white rounded-xl overflow-hidden shadow hover:shadow-md transition"
+                >
+                  <img
+                    src={post.img}
+                    alt={post.title}
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-4">
+                    <span className="text-sm text-green-600 font-medium">
+                      {post.category}
+                    </span>
+                    <h4 className="font-semibold mt-2">{post.title}</h4>
+                  </div>
                 </div>
-              </div>
-            ))}
+              )
+            )}
           </div>
         </div>
       </section>

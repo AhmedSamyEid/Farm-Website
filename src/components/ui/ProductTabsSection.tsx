@@ -41,7 +41,7 @@ export default function ProductTabsSection() {
   const [activeTab, setActiveTab] = useState<string>('onSale');
 
   return (
-    <section className="bg-yellow-100 py-10 text-center">
+    <section className="bg-yellow-200 py-10 text-center">
       <div className="mb-4">
         <span className="bg-white px-4 py-1 rounded-full text-sm font-medium">Our Products</span>
       </div>
@@ -76,6 +76,8 @@ export default function ProductTabsSection() {
           </div>
         ))}
       </div>
+      
     </section>
+    
   );
 }
