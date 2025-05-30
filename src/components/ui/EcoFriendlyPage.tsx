@@ -1,13 +1,7 @@
-import { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
+import { useState, useEffect } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const TestimonialsTimeline = () => {
-  const [swiperRef, setSwiperRef] = useState(null);
-
-
-
   const posts = [
     {
       img: "/image/Container11.png",
@@ -38,37 +32,57 @@ const TestimonialsTimeline = () => {
   ];
 
   const ITEMS_PER_PAGE = 4;
-  const [startIndex, setStartIndex] = useState(0);
+  const [logoIndex, setLogoIndex] = useState(0);
+  const [isMediumScreen, setIsMediumScreen] = useState(false);
+  const [currentPostIndex, setCurrentPostIndex] = useState(0);
 
-  const handleNext = () => {
-    setStartIndex((prev) =>
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMediumScreen(window.innerWidth >= 768 && window.innerWidth < 1024);
+    };
+
+    handleResize(); // Initial
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const handleLogoNext = () => {
+    setLogoIndex((prev) =>
       prev + ITEMS_PER_PAGE < logos.length ? prev + ITEMS_PER_PAGE : prev
     );
   };
 
-  const handlePrev = () => {
-    setStartIndex((prev) =>
+  const handleLogoPrev = () => {
+    setLogoIndex((prev) =>
       prev - ITEMS_PER_PAGE >= 0 ? prev - ITEMS_PER_PAGE : 0
     );
   };
 
-  const visibleLogos = logos.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+  const visibleLogos = logos.slice(logoIndex, logoIndex + ITEMS_PER_PAGE);
 
+  const handlePostNext = () => {
+    setCurrentPostIndex((prev) =>
+      prev + 1 < posts.length ? prev + 1 : prev
+    );
+  };
 
-  
+  const handlePostPrev = () => {
+    setCurrentPostIndex((prev) => (prev > 0 ? prev - 1 : 0));
+  };
+
   return (
     <div className="bg-white">
-    
+      {/* Client Logos Section */}
       <div className="max-w-6xl mx-auto">
         <div className="flex justify-end space-x-2 mt-4">
           <button
-            onClick={handlePrev}
+            onClick={handleLogoPrev}
             className="bg-gray-200 p-2 rounded-full"
           >
             ←
           </button>
           <button
-            onClick={handleNext}
+            onClick={handleLogoNext}
             className="bg-gray-200 p-2 rounded-full"
           >
             →
@@ -87,7 +101,7 @@ const TestimonialsTimeline = () => {
         </div>
       </div>
 
-  
+      {/* Quote Form */}
       <div className="max-w-7xl mx-auto py-16 px-4 grid md:grid-cols-2 gap-12 items-center">
         <img src="/image/img-01.png.png" alt="Farmer" className="rounded-xl" />
         <div className="bg-gray-100 p-8 rounded-xl shadow-lg">
@@ -113,57 +127,52 @@ const TestimonialsTimeline = () => {
         </div>
       </div>
 
-    
-
-    
+      {/* Posts Slider */}
       <section className="py-16 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="flex justify-between items-center mb-6">
             <h3 className="text-2xl font-bold">Latest posts & articles</h3>
-            <div className="flex gap-2">
-              <button
-                onClick={() => swiperRef?.slidePrev()}
-                className="p-2 bg-white rounded-full shadow hover:bg-gray-100"
-              >
-                <FaArrowLeft />
-              </button>
-              <button
-                onClick={() => swiperRef?.slideNext()}
-                className="p-2 bg-white rounded-full shadow hover:bg-gray-100"
-              >
-                <FaArrowRight />
-              </button>
-            </div>
+            {isMediumScreen && (
+              <div className="flex gap-2">
+                <button
+                  onClick={handlePostPrev}
+                  className="p-2 bg-white rounded-full shadow hover:bg-gray-100"
+                >
+                  <FaArrowLeft />
+                </button>
+                <button
+                  onClick={handlePostNext}
+                  className="p-2 bg-white rounded-full shadow hover:bg-gray-100"
+                >
+                  <FaArrowRight />
+                </button>
+              </div>
+            )}
           </div>
 
-          <Swiper
-            spaceBetween={20}
-            slidesPerView={1}
-            onSwiper={setSwiperRef}
-            breakpoints={{
-              640: { slidesPerView: 1.2 },
-              768: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 },
-            }}
-          >
-            {posts.map((post, idx) => (
-              <SwiperSlide key={idx}>
-                <div className="bg-white rounded-xl overflow-hidden shadow hover:shadow-md transition">
-                  <img
-                    src={post.img}
-                    alt={post.title}
-                    className="w-full h-48 object-cover"
-                  />
-                  <div className="p-4">
-                    <span className="text-sm text-green-600 font-medium">
-                      {post.category}
-                    </span>
-                    <h4 className="font-semibold mt-2">{post.title}</h4>
-                  </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-3 gap-6 transition-all duration-300">
+            {(isMediumScreen
+              ? [posts[currentPostIndex]]
+              : posts
+            ).map((post, idx) => (
+              <div
+                key={idx}
+                className="bg-white rounded-xl overflow-hidden shadow hover:shadow-md transition"
+              >
+                <img
+                  src={post.img}
+                  alt={post.title}
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-4">
+                  <span className="text-sm text-green-600 font-medium">
+                    {post.category}
+                  </span>
+                  <h4 className="font-semibold mt-2">{post.title}</h4>
                 </div>
-              </SwiperSlide>
+              </div>
             ))}
-          </Swiper>
+          </div>
         </div>
       </section>
     </div>
