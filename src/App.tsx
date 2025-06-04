@@ -6,6 +6,8 @@ import PAGES from "./components/pages/PAGES";
 import { BrowserRouter, Routes } from "react-router";
 import OurHistory from "./components/pages/OurHistory";
 import PageLayout from "./components/layouts/PageLayout";
+import OurTeamMember from "./components/pages/OurTeamMember"
+
 function App() {
   return (
     <>
@@ -17,6 +19,7 @@ function App() {
             <Route path="/home3" element={<Home3 />} />
             <Route path="/about" element={<PAGES />} />
             <Route path="/history" element={<OurHistory />} />
+            <Route path="/team" element= {<OurTeamMember />} />
           </Route>
         </Routes>
       </BrowserRouter>
