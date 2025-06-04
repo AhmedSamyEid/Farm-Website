@@ -9,6 +9,7 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
+
   {
     label: "Home",
     submenu: [
@@ -36,6 +37,7 @@ const navItems: NavItem[] = [
   },
   { label: "BLOG", link: "/blog" },
   { label: "CONTACT US", link: "/contact" },
+  
 ];
 
 const NavItemComponent: React.FC<{ item: NavItem }> = ({ item }) => {
