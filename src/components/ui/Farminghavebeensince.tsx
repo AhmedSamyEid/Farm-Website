@@ -42,7 +42,7 @@ const timeline = [
 ];
 const ITEMS_PER_PAGE = 4;
 
-const TestimonialsTimeline = () => {
+const Farminghavebeensince = () => {
   const [startIndex, setStartIndex] = useState(0);
 
   const handleNext = () => {
@@ -142,4 +142,4 @@ const TestimonialsTimeline = () => {
   );
 };
 
-export default TestimonialsTimeline;
+export default Farminghavebeensince;

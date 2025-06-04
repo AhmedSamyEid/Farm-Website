@@ -1,4 +1,4 @@
-import TestimonialsTimeline from "../ui/TestimonialsTimeline"
+import Farminghavebeensince from "../ui/Farminghavebeensince"
 import Sellingorganicfood from "../ui/Sellingorganicfood"
 import ChooseWhatsPerfectForYourField from "../ui/ChooseWhatsPerfectForYourField"
 import QualityTrust from "../ui/QualityTrust";
@@ -9,7 +9,7 @@ export default function Home1() {
     <QualityTrust />
       <Sellingorganicfood />
       <ChooseWhatsPerfectForYourField />
-      <TestimonialsTimeline />
+      <Farminghavebeensince />
     </>
   );
 }
