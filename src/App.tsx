@@ -4,6 +4,7 @@ import Home2 from "./components/pages/Home2";
 import Home3 from "./components/pages/Home3";
 import PAGES from "./components/pages/PAGES";
 import FaqData from "./components/pages/FaqData";
+import Services from "./components/pages/Services";
 import { BrowserRouter, Routes } from "react-router";
 import OurHistory from "./components/pages/OurHistory";
 import PageLayout from "./components/layouts/PageLayout";
@@ -24,6 +25,7 @@ function App() {
             <Route path="/team" element={<OurTeamMember />} />
             <Route path="/team-detail" element={<TeamMemberDetail />} />
             <Route path="/faq" element={<FaqData />} />
+            <Route path="/services" element={<Services />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -30,8 +30,8 @@ const navItems: NavItem[] = [
   {
     label: "SERVICES",
     submenu: [
-      { name: "Consulting", path: "/consulting" },
-      { name: "Support", path: "/support" },
+      { name: "SERVICES", path: "/services" },
+      { name: "Harvest Concepts", path: "/concepts" },
       { name: "Solutions", path: "/solutions" },
     ],
   },
