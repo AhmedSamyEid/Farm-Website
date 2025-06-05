@@ -1,6 +1,12 @@
 import { FaShareAlt } from 'react-icons/fa';
 
-const teamMembers = [
+interface TeamMember {
+  name: string;
+  title: string;
+  image: string;
+}
+
+const teamMembers: TeamMember[] = [
   {
     name: 'Jacob Mersin',
     title: 'CEO Owner',
@@ -43,18 +49,28 @@ const teamMembers = [
   },
 ];
 
-const TeamSection = () => {
+const TeamMembers: React.FC = () => {
   return (
     <section className="py-16 bg-[#fefcf6]">
       <div className="max-w-7xl mx-auto px-6">
-        
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {teamMembers.map((member, index) => (
-            <div key={index} className="relative bg-white rounded-xl shadow-md overflow-hidden">
-              <img src={member.image} alt={member.name} className="w-full h-72 object-cover" />
+            <div
+              key={index}
+              className="relative bg-white rounded-xl shadow-md overflow-hidden"
+            >
+              <img
+                src={member.image}
+                alt={member.name}
+                className="w-full h-72 object-cover"
+              />
               <div className="p-4">
-                <p className="text-green-700 text-sm font-semibold">{member.title}</p>
-                <h3 className="text-lg font-bold text-gray-900">{member.name}</h3>
+                <p className="text-green-700 text-sm font-semibold">
+                  {member.title}
+                </p>
+                <h3 className="text-lg font-bold text-gray-900">
+                  {member.name}
+                </h3>
               </div>
               <button className="absolute bottom-4 right-4 bg-yellow-300 p-2 rounded-full hover:bg-yellow-400 transition">
                 <FaShareAlt className="text-gray-800" />
@@ -67,4 +83,4 @@ const TeamSection = () => {
   );
 };
 
-export default TeamSection;
+export default TeamMembers;
