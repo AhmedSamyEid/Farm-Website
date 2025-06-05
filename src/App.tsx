@@ -9,7 +9,11 @@ import { BrowserRouter, Routes } from "react-router";
 import OurHistory from "./components/pages/OurHistory";
 import PageLayout from "./components/layouts/PageLayout";
 import OurTeamMember from "./components/pages/OurTeamMember";
+import HarvestConcepts from "./components/pages/HarvestConcepts";
 import TeamMemberDetail from "./components/pages/TeamMemberDetail";
+import PortfolioGridCol3 from "./components/pages/PortfolioGridCol3";
+import PortfolioGridCol2 from "./components/pages/PortfolioGridCol2";
+import PortfolioGridCol4 from "./components/pages/PortfolioGridCol4";
 
 function App() {
   return (
@@ -21,11 +25,15 @@ function App() {
             <Route path="/home2" element={<Home2 />} />
             <Route path="/home3" element={<Home3 />} />
             <Route path="/about" element={<PAGES />} />
+            <Route path="/faq" element={<FaqData />} />
             <Route path="/history" element={<OurHistory />} />
             <Route path="/team" element={<OurTeamMember />} />
-            <Route path="/team-detail" element={<TeamMemberDetail />} />
-            <Route path="/faq" element={<FaqData />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/concepts" element={<HarvestConcepts />} />
+            <Route path="/portfolio" element={<PortfolioGridCol3 />} />
+            <Route path="/team-detail" element={<TeamMemberDetail />} />
+            <Route path="/portfolioCol" element={<PortfolioGridCol2 />} />
+            <Route path="/PortfolioGridCol" element={<PortfolioGridCol4 />} />
           </Route>
         </Routes>
       </BrowserRouter>

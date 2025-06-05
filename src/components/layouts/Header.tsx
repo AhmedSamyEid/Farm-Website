@@ -32,10 +32,18 @@ const navItems: NavItem[] = [
     submenu: [
       { name: "SERVICES", path: "/services" },
       { name: "Harvest Concepts", path: "/concepts" },
-      { name: "Solutions", path: "/solutions" },
+      
     ],
   },
-  { label: "BLOG", link: "/blog" },
+  {
+    label: "BLOG",
+    submenu: [
+      { name: "Portfolio Grid Col 2", path: "/portfolioCol" },
+      { name: "Portfolio Grid Col 3", path: "/portfolio" },
+      { name: "Portfolio Grid Col 4", path: "/PortfolioGridCol" },
+    ],
+  },
+
   { label: "CONTACT US", link: "/contact" },
   
 ];
