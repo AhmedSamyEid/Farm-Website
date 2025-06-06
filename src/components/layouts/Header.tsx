@@ -11,7 +11,7 @@ interface NavItem {
 const navItems: NavItem[] = [
 
   {
-    label: "Home",
+    label: "Home", 
     submenu: [
       { name: "Home 2", path: "/home2" },
       { name: "Home 3", path: "/home3" },
