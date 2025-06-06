@@ -5,7 +5,7 @@ import Home3 from "./components/pages/Home3";
 import PAGES from "./components/pages/PAGES";
 import FaqData from "./components/pages/FaqData";
 import Services from "./components/pages/Services";
-import { HashRouter, Routes } from "react-router";
+import { BrowserRouter, Routes } from "react-router";
 import OurHistory from "./components/pages/OurHistory";
 import PageLayout from "./components/layouts/PageLayout";
 import OurTeamMember from "./components/pages/OurTeamMember";
@@ -18,7 +18,7 @@ import PortfolioGridCol4 from "./components/pages/PortfolioGridCol4";
 function App() {
   return (
     <>
-      <HashRouter>
+      <BrowserRouter>
         <Routes>
           <Route element={<PageLayout />}>
             <Route path="/" element={<Home1 />} />
@@ -36,7 +36,7 @@ function App() {
             <Route path="/PortfolioGridCol" element={<PortfolioGridCol4 />} />
           </Route>
         </Routes>
-      </HashRouter>
+      </BrowserRouter>
     </>
   );
 }
