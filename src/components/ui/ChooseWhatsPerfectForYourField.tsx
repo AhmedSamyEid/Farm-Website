@@ -71,7 +71,7 @@ const ServicesSection = () => {
 
         <div className="overflow-hidden">
           <div
-            className="flex transition-transform duration-500"
+            className="flex transition-transform duration-500 "
             style={{
               transform: `translateX(-${index * 33}%)`,
               width: `${(cards.length / cardsPerPage) * 100}%`,
@@ -86,7 +86,7 @@ const ServicesSection = () => {
                   width: `${(cards.length / cardsPerPage) * 10}%`,
                 }}
               >
-                <div className="bg-white text-black rounded-xl overflow-hidden shadow-md">
+                <div className="bg-white text-black  rounded-xl overflow-hidden shadow-md">
                   <img
                     src={item.img}
                     alt={item.title}
@@ -142,7 +142,7 @@ const ServicesSection = () => {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-4">
+        <div className="grid grid-cols-1 ml-6 md:grid-cols-3 gap-8 mt-4">
           <img
             src="/image/Container.png"
             alt="Woman Farming"
