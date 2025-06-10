@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FaBars } from "react-icons/fa";
 import { FaXmark } from "react-icons/fa6";
+import { Link } from "react-router";
 
 interface NavItem {
   label: string;
@@ -61,15 +62,15 @@ const NavItemComponent: React.FC<{ item: NavItem }> = ({ item }) => {
           {item.label}
         </button>
       ) : (
-        <a href={item.link || "#"} className="hover:text-yellow-300 transition">
+        <Link to={item.link || "#"} className="hover:text-yellow-300 transition">
           {item.label}
-        </a>
+        </Link>
       )}
       {dropdownOpen && item.submenu && (
         <ul className="absolute top-8 left-0 w-56 bg-white text-black shadow-lg rounded z-50">
           {item.submenu.map((sub, idx) => (
             <li key={idx} className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-              <a href={sub.path}>{sub.name}</a>
+              <Link to={sub.path}>{sub.name}</Link>
             </li>
           ))}
         </ul>
@@ -92,18 +93,17 @@ const MobileMenu: React.FC<{ navItems: NavItem[]; onClose: () => void }> = ({
             <ul className="ml-4 mt-2 space-y-1">
               {item.submenu.map((sub, idx) => (
                 <li key={idx} className="hover:text-yellow-300">
-                  <a href={sub.path}>{sub.name}</a>
+                  <Link to={sub.path}>{sub.name}</Link>
                 </li>
               ))}
             </ul>
           </details>
         ) : (
-          <a
-            href={item.link || "#"}
+          <Link to={item.link || "#"}
             className="block text-lg font-medium hover:text-yellow-300"
           >
             {item.label}
-          </a>
+          </Link>
         )}
       </div>
     ))}
