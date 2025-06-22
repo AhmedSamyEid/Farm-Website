@@ -123,7 +123,7 @@ const Farminghavebeensince = () => {
         </div>
 
         <div className="mt-16">
-          <h3 className="text-5xl text-green-900 font-semibold m-20">
+          <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-green-900 font-semibold m-10">
             Farming have been since <br />
             1866
           </h3>

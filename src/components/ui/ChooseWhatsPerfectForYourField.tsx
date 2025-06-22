@@ -12,7 +12,7 @@ const ServicesSection = () => {
     { img: "/image/service-img-03.jpg.png", title: "Soil Fertilization" },
     {
       img: "/image/Container11.png",
-      title: "What technology is used in verticalfarming?",
+      title: "What technology is used in vertical farming?",
     },
     {
       img: "/image/Mask Group.png",
@@ -26,8 +26,10 @@ const ServicesSection = () => {
 
   useEffect(() => {
     const updateCardsPerPage = () => {
-      if (window.innerWidth >= 768) {
-        setCardsPerPage(3);
+      if (window.innerWidth >= 1024) {
+        setCardsPerPage(3); 
+      } else if (window.innerWidth >= 640) {
+        setCardsPerPage(2); 
       } else {
         setCardsPerPage(1);
       }
@@ -42,6 +44,7 @@ const ServicesSection = () => {
 
   return (
     <section className="font-sans">
+    
       <div className="bg-green-700 text-white py-12 px-4 md:px-16 relative">
         <div className="flex justify-between items-center mb-8">
           <div>
@@ -69,12 +72,13 @@ const ServicesSection = () => {
           </div>
         </div>
 
+        
         <div className="overflow-hidden">
           <div
-            className="flex transition-transform duration-500 "
+            className="flex transition-transform duration-500"
             style={{
-              transform: `translateX(-${index * 33}%)`,
-              width: `${(cards.length / cardsPerPage) * 100}%`,
+              width: `${(cards.length * 100) / cardsPerPage}%`,
+              transform: `translateX(-${(index * 100) / cards.length}%)`,
             }}
           >
             {cards.map((item, i) => (
@@ -82,11 +86,10 @@ const ServicesSection = () => {
                 key={i}
                 className="p-4"
                 style={{
-                  transform: `translateX(-${index * 100}%)`,
-                  width: `${(cards.length / cardsPerPage) * 10}%`,
+                  width: `${100 / cards.length}%`,
                 }}
               >
-                <div className="bg-white text-black  rounded-xl overflow-hidden shadow-md">
+                <div className="bg-white text-black rounded-xl overflow-hidden shadow-md">
                   <img
                     src={item.img}
                     alt={item.title}
@@ -105,6 +108,7 @@ const ServicesSection = () => {
         </div>
       </div>
 
+    
       <div className="bg-[#F9F8F4] px-4 md:px-16 py-16 text-center relative">
         <span className="bg-gray-200 px-3 py-1 rounded-full text-xs font-semibold text-gray-700 inline-block mb-4">
           Our Services
@@ -124,7 +128,7 @@ const ServicesSection = () => {
         </div>
 
         <div className="grid md:grid-cols-4 gap-6 mb-16">
-          {[
+          {[ 
             { icon: <FaSeedling />, title: "Agriculture Products" },
             { icon: <FaCarrot />, title: "Fresh Vegetables" },
             { icon: <FaLeaf />, title: "Quality Products" },
@@ -142,21 +146,21 @@ const ServicesSection = () => {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 ml-6 md:grid-cols-3 gap-8 mt-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-4 justify-center">
           <img
             src="/image/Container.png"
             alt="Woman Farming"
-            className="rounded-xl shadow-md w-80 h-70 object-cover "
+            className="rounded-xl shadow-md w-80 h-70 object-cover mx-auto"
           />
           <img
             src="/image/Container1.png"
             alt="Man Using Tablet"
-            className="rounded-xl shadow-md w-80 h-70 object-cover"
+            className="rounded-xl shadow-md w-80 h-70 object-cover mx-auto"
           />
           <img
             src="/image/about-img.jpg.png"
             alt="Man Using Tablet"
-            className="rounded-xl shadow-md w-80 h-70 object-cover"
+            className="rounded-xl shadow-md w-80 h-70 object-cover mx-auto"
           />
         </div>
       </div>
